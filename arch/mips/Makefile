@@ -259,7 +259,7 @@ load-y					= $(CONFIG_PHYSICAL_START)
 endif
 
 # Sign-extend the entry point to 64 bits if retrieved as a 32-bit number.
-entry-y		= $(shell $(OBJDUMP) -f vmlinux 2>/dev/null \
+entry-y		= $(shell LANG=C $(OBJDUMP) -f vmlinux 2>/dev/null \
 			| sed -n '/^start address / { \
 				s/^.* //; \
 				s/0x\([0-7].......\)$$/0x00000000\1/; \
