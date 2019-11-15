@@ -245,6 +245,8 @@ libs-y				+= arch/mips/fw/lib/
 #
 ifdef CONFIG_SYS_SUPPORTS_ZBOOT
 COMPRESSION_FNAME		= vmlinuz
+# KBUILD_IMAGE specify target image being built
+KBUILD_IMAGE := vmlinuz
 else
 COMPRESSION_FNAME		= vmlinux
 endif

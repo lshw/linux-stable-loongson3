@@ -14,6 +14,7 @@
 
 include $(srctree)/arch/mips/Kbuild.platforms
 
+
 # set the default size of the mallocing area for decompressing
 BOOT_HEAP_SIZE := 0x400000
 
@@ -61,7 +62,7 @@ targets := $(notdir $(vmlinuzobjs-y))
 
 targets += vmlinux.bin
 OBJCOPYFLAGS_vmlinux.bin := $(OBJCOPYFLAGS) -O binary -R .comment -S
-$(obj)/vmlinux.bin: $(KBUILD_IMAGE) FORCE
+$(obj)/vmlinux.bin: vmlinux FORCE
 	$(call if_changed,objcopy)
 
 tool_$(CONFIG_KERNEL_GZIP)    = gzip
