@@ -307,7 +307,7 @@ void __init reset_all_zones_managed_pages(void)
 
 unsigned long __init free_all_bootmem(void)
 {
-	unsigned long i, total_pages = 0;
+	u64 i, total_pages = 0;
 	phys_addr_t start, end;
 	bootmem_data_t *bdata;
 
