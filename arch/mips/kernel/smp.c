@@ -374,6 +374,9 @@ asmlinkage void start_secondary(void)
 	if (!cpu_data[cpu].udelay_val)
 		cpu_data[cpu].udelay_val = loops_per_jiffy;
 
+	set_cpu_sibling_map(cpu);
+	set_cpu_core_map(cpu);
+
 	cpumask_set_cpu(cpu, &cpu_coherent_mask);
 	notify_cpu_starting(cpu);
 
@@ -384,9 +387,6 @@ asmlinkage void start_secondary(void)
 
 	/* The CPU is running and counters synchronised, now mark it online */
 	set_cpu_online(cpu, true);
-
-	set_cpu_sibling_map(cpu);
-	set_cpu_core_map(cpu);
 
 	calculate_cpu_foreign_map();
 
